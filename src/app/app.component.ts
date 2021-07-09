@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { WindowRef } from './WindowRef';
 
+//import * as variable from 'applePayButton'
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -24,5 +26,6 @@ export class AppComponent {
     {
       console.log("apple session not found");
     }
-  }
+  }  
 }
+

@@ -32,7 +32,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": ["src/apple-pay-sdk.js"]
           },
           "configurations": {
             "production": {

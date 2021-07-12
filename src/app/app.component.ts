@@ -11,18 +11,26 @@ import { WindowRef } from './WindowRef';
 })
 export class AppComponent {
   title = 'ApplPayDemo';
+  messageInfo = "Hello World"
 
   constructor(private winRef:WindowRef)
   {
     console.log('Window object', winRef.nativeWindow);    
 
     if (winRef.nativeWindow.ApplePaySession && winRef.nativeWindow.ApplePaySession.canMakePayments())
-      console.log("apple session can make payments");
+      {
+        console.log("apple session can make payments");
+        this.messageInfo = "apple session can make payments";
+      }
     else
-    console.log("apple session can not make payments");
+    {
+      console.log("apple session not found. can not make payments");
+      this.messageInfo = "apple session not found. can not make payments";
+    }
     if (winRef.nativeWindow.ApplePaySession) {
 
       console.log("apple session found");
+      this.messageInfo = "apple session found";
       // var merchantIdentifier = 'example.com.store';
       // var promise = winRef.nativeWindow.ApplePaySession.canMakePaymentsWithActiveCard(merchantIdentifier);
     }

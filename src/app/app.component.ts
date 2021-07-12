@@ -16,6 +16,10 @@ export class AppComponent {
   {
     console.log('Window object', winRef.nativeWindow);    
 
+    if (winRef.nativeWindow.ApplePaySession && winRef.nativeWindow.ApplePaySession.canMakePayments())
+      console.log("apple session can make payments");
+    else
+    console.log("apple session can not make payments");
     if (winRef.nativeWindow.ApplePaySession) {
 
       console.log("apple session found");
@@ -26,6 +30,16 @@ export class AppComponent {
     {
       console.log("apple session not found");
     }
-  }  
+  }
+  
+  
+  // function onApplePayButtonClicked() { 
+
+  //   if (!ApplePaySession) {
+  //       return;
+  //   }
+  // }
 }
+
+
 

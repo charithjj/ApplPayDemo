@@ -19,8 +19,8 @@ export class AppComponent {
     if (winRef.nativeWindow.ApplePaySession) {
 
       console.log("apple session found");
-      var merchantIdentifier = 'example.com.store';
-      var promise = winRef.nativeWindow.ApplePaySession.canMakePaymentsWithActiveCard(merchantIdentifier);
+      // var merchantIdentifier = 'example.com.store';
+      // var promise = winRef.nativeWindow.ApplePaySession.canMakePaymentsWithActiveCard(merchantIdentifier);
     }
     else
     {

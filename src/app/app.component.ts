@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { WindowRef } from './WindowRef';
 
+import { WindowRefService, ICustomWindow } from './WindowRefService';
+
 //import * as variable from 'applePayButton'
 
 @Component({
@@ -13,11 +15,16 @@ export class AppComponent {
   title = 'ApplPayDemo';
   messageInfo = "Hello World"
 
-  constructor(private winRef:WindowRef)
+  private _window: ICustomWindow;
+
+  //constructor(private winRef:WindowRef)
+  constructor(winRef: WindowRefService)
   {
+    this._window = winRef.nativeWindow;
+    
     console.log('Window object', winRef.nativeWindow);    
 
-    if (winRef.nativeWindow.ApplePaySession && winRef.nativeWindow.ApplePaySession.canMakePayments())
+    if ((winRef.nativeWindow as any).ApplePaySession && (winRef.nativeWindow as any).ApplePaySession.canMakePayments())
       {
         console.log("apple session can make payments");
         this.messageInfo = "apple session can make payments";
@@ -27,7 +34,7 @@ export class AppComponent {
       console.log("apple session not found. can not make payments");
       this.messageInfo = "apple session not found. can not make payments";
     }
-    if (winRef.nativeWindow.ApplePaySession) {
+    if ((winRef.nativeWindow as any).ApplePaySession) {
 
       console.log("apple session found");
       this.messageInfo = "apple session found";

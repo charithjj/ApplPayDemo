@@ -5,6 +5,8 @@ import { WindowRef } from './WindowRef';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 
+import { WindowRefService } from './WindowRefService';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -12,7 +14,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule, FormsModule
   ],
-  providers: [WindowRef],
+  providers: [WindowRef, WindowRefService],
   //add the schemas property and pass the CUSTOM_ELEMENTS_SCHEMA constant
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

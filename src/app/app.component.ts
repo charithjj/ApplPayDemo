@@ -23,6 +23,7 @@ export class AppComponent {
     this._window = winRef.nativeWindow;
     
     console.log('Window object', winRef.nativeWindow);    
+    console.log('ApplePay Session', (winRef.nativeWindow as any).ApplePaySession);   
 
     if ((winRef.nativeWindow as any).ApplePaySession && (winRef.nativeWindow as any).ApplePaySession.canMakePayments())
       {

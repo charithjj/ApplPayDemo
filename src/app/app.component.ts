@@ -25,7 +25,7 @@ export class AppComponent {
     console.log('Window object', winRef.nativeWindow);    
     console.log('ApplePay Session', (winRef.nativeWindow as any).ApplePaySession);   
 
-    if ((winRef.nativeWindow as any).ApplePaySession && (winRef.nativeWindow as any).ApplePaySession.canMakePayments())
+    if ((winRef.nativeWindow as any).ApplePaySession)// && (winRef.nativeWindow as any).ApplePaySession.canMakePayments())
       {
         console.log("apple session can make payments");
         this.messageInfo = "apple session can make payments";

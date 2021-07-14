@@ -26,10 +26,10 @@ export class AppComponent {
     console.log('ApplePay Session', (winRef.nativeWindow as any).ApplePaySession);   
 
     if ((winRef.nativeWindow as any).ApplePaySession)// && (winRef.nativeWindow as any).ApplePaySession.canMakePayments())
-      {
-        console.log("apple session can make payments");
-        this.messageInfo = "apple session can make payments";
-      }
+    {
+      console.log("apple session available for ApplePayJS.");
+      this.messageInfo = "apple session available for ApplePayJS.";
+    }
     else
     {
       console.log("apple session not found. can not make payments");
@@ -48,13 +48,36 @@ export class AppComponent {
     }
   }
   
+  public ApplePayApiTest() {
+    if (!(this._window as any).ApplePaySession) {
+      return;
+  }
   
-  // function onApplePayButtonClicked() { 
+  // Define ApplePayPaymentRequest
+  const request = {
+      "countryCode": "US",
+      "currencyCode": "USD",
+      "merchantCapabilities": [
+          "supports3DS"
+      ],
+      "supportedNetworks": [
+          "visa",
+          "masterCard",
+          "amex",
+          "discover"
+      ],
+      "total": {
+          "label": "Demo (Card is not charged)",
+          "type": "final",
+          "amount": "1.99"
+      }
+  };
+  
+  // Create ApplePaySession
+  const session = new (this._window as any).ApplePaySession(3, request);
 
-  //   if (!ApplePaySession) {
-  //       return;
-  //   }
-  // }
+    
+  }
 }
 
 

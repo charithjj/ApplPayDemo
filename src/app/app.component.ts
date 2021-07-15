@@ -63,7 +63,7 @@ export class AppComponent {
       this.messageInfo = this.messageInfo + "   :apple session available for ApplePayAPI.";
     }
 
-    try {
+    // try {
 
       // Define PaymentMethodData
       const paymentMethodData = [{
@@ -107,7 +107,7 @@ export class AppComponent {
       const request = new PaymentRequest(paymentMethodData, paymentDetails);//, paymentOptions);
 
       console.log("YESS payment request created!!!");
-    }
+    //}
     // // Define ApplePayPaymentRequest
     // const request = {
     //     "countryCode": "US",
@@ -131,9 +131,9 @@ export class AppComponent {
     // // Create ApplePaySession
     // const session = new (this._window as any).ApplePaySession(3, request);
 
-    catch (e) {
-      console.log(e);
-  }
+  //   catch (e) {
+  //     console.log(e);
+  // }
 
   }
 }

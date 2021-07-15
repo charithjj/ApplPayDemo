@@ -62,31 +62,79 @@ export class AppComponent {
       console.log("apple session available for ApplePayAPI.");
       this.messageInfo = this.messageInfo + "   :apple session available for ApplePayAPI.";
     }
-  
-    // Define ApplePayPaymentRequest
-    const request = {
-        "countryCode": "US",
-        "currencyCode": "USD",
-        "merchantCapabilities": [
-            "supports3DS"
-        ],
-        "supportedNetworks": [
-            "visa",
-            "masterCard",
-            "amex",
-            "discover"
-        ],
-        "total": {
-            "label": "Demo (Card is not charged)",
-            "type": "final",
-            "amount": "1.99"
-        }
-    };
-    
-    // Create ApplePaySession
-    const session = new (this._window as any).ApplePaySession(3, request);
 
+    try {
+
+      // Define PaymentMethodData
+      const paymentMethodData = [{
+          "supportedMethods": "https://apple.com/apple-pay",
+          "data": {
+              "version": 3,
+              "merchantIdentifier": "merchant.com.example",
+              "merchantCapabilities": [
+                  "supports3DS"
+              ],
+              "supportedNetworks": [
+                  "amex",
+                  "discover",
+                  "masterCard",
+                  "visa"
+              ],
+              "countryCode": "US"
+          }
+      }];
+      // Define PaymentDetails
+      const paymentDetails = {
+          "total": {
+              "label": "My Merchant",
+              "amount": {
+                  "value": "27.50",
+                  "currency": "USD"
+              }
+          }
+      };
+      // Define PaymentOptions
+      const paymentOptions = {
+          "requestPayerName": false,
+          "requestBillingAddress": false,
+          "requestPayerEmail": false,
+          "requestPayerPhone": false,
+          "requestShipping": true,
+          "shippingType": "shipping"
+      };
+      
+      // Create PaymentRequest
+      const request = new PaymentRequest(paymentMethodData, paymentDetails);//, paymentOptions);
+
+      console.log("YESS payment request created!!!");
+    }
+    // // Define ApplePayPaymentRequest
+    // const request = {
+    //     "countryCode": "US",
+    //     "currencyCode": "USD",
+    //     "merchantCapabilities": [
+    //         "supports3DS"
+    //     ],
+    //     "supportedNetworks": [
+    //         "visa",
+    //         "masterCard",
+    //         "amex",
+    //         "discover"
+    //     ],
+    //     "total": {
+    //         "label": "Demo (Card is not charged)",
+    //         "type": "final",
+    //         "amount": "1.99"
+    //     }
+    // };
     
+    // // Create ApplePaySession
+    // const session = new (this._window as any).ApplePaySession(3, request);
+
+    catch (e) {
+      console.log(e);
+  }
+
   }
 }
 

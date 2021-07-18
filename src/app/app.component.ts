@@ -50,7 +50,7 @@ export class AppComponent {
     this.ApplePayApiTest();
   }
   
-  public ApplePayApiTest() {
+  public async ApplePayApiTest() {
     if (!(this._window as any).ApplePaySession) 
     {
       console.log("apple session not found for ApplePayAPI.");
@@ -107,33 +107,10 @@ export class AppComponent {
       const request = new PaymentRequest(paymentMethodData, paymentDetails);//, paymentOptions);
 
       console.log("YESS payment request created!!!");
-    //}
-    // // Define ApplePayPaymentRequest
-    // const request = {
-    //     "countryCode": "US",
-    //     "currencyCode": "USD",
-    //     "merchantCapabilities": [
-    //         "supports3DS"
-    //     ],
-    //     "supportedNetworks": [
-    //         "visa",
-    //         "masterCard",
-    //         "amex",
-    //         "discover"
-    //     ],
-    //     "total": {
-    //         "label": "Demo (Card is not charged)",
-    //         "type": "final",
-    //         "amount": "1.99"
-    //     }
-    // };
-    
-    // // Create ApplePaySession
-    // const session = new (this._window as any).ApplePaySession(3, request);
 
-  //   catch (e) {
-  //     console.log(e);
-  // }
+      // const response = await request.show());
+      // const status = "success";
+      // await response.complete(status);
 
   }
 }
